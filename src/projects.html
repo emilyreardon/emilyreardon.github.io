@@ -54,7 +54,7 @@ body {
 
 <body>
 
-<main class="main-content" id="projects-list"></main>
+<div class="main-content" id="projects-list"></div>
 
 <script>
 const projects = [
@@ -125,7 +125,7 @@ function renderProjects() {
   });
 }
 
-renderProjects();
+window.addEventListener("DOMContentLoaded", renderProjects);
 </script>
 
 </body>
