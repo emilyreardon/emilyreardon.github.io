@@ -1,0 +1,884 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emily Reardon | Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,700&family=Josefin+Sans:wght@300&family=Poiret+One&family=Metamorphous&display=swap" rel="stylesheet">
+  <style>
+    /* Base */
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #111;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      font-size: 0.9rem;
+    }
+
+
+    .site-header,
+    .main-content,
+    .footer-container {
+      max-width: 900px;
+      margin: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+
+    /* Header */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #000;
+    }
+
+
+    .brand h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 0.12rem;
+    }
+
+
+    .brand h1 a {
+      text-decoration: none;
+      color: #000;
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: nowrap;
+    }
+
+
+    .brand h1 a:hover { opacity: 0.7; }
+
+
+    .tagline {
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+
+    /* Nav */
+    .nav-container { display: flex; }
+
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      position: relative;
+    }
+
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      left: 0;
+      bottom: -3px;
+      background-color: #000;
+      transition: width 0.25s ease;
+    }
+
+
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.current::after { width: 100%; }
+
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+
+    /* Name font-cycle animation */
+    :root {
+      --cycle-duration: 32s;
+      --stagger-step: 2.5s;
+    }
+
+
+    .letter {
+      display: inline-block;
+      animation: name-font-cycle var(--cycle-duration) steps(1) infinite;
+      animation-delay: calc(var(--i) * var(--stagger-step) * -1);
+    }
+
+
+    @keyframes name-font-cycle {
+      0%   { font-family: "Fraunces", serif; }
+      25%  { font-family: "Josefin Sans", sans-serif; }
+      50%  { font-family: "Poiret One", cursive; }
+      75%  { font-family: "Metamorphous", serif; }
+      100% { font-family: "Fraunces", serif; }
+    }
+
+
+    /* Period dots */
+    .period-dot {
+      display: inline-block;
+      border-radius: 50%;
+      background-color: currentColor;
+      vertical-align: baseline;
+      line-height: 0;
+      margin: 0 0.04em;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+
+
+    .period-dot.sz-sm { width: 0.13em; height: 0.13em; }
+    .period-dot.sz-md { width: 0.18em; height: 0.18em; }
+    .period-dot.sz-lg { width: 0.24em; height: 0.24em; }
+    .period-dot.visible { opacity: 1; }
+
+
+    /* Filter bar */
+    .filter-bar {
+      max-width: 900px;
+      margin: 1.6rem auto 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      display: flex;
+      gap: 1.4rem;
+      border-bottom: 1px solid #000;
+      padding-bottom: 0;
+    }
+
+
+    .filter-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0.35rem 0 0.45rem 0;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: #555;
+      transition: color 0.18s ease, border-color 0.18s ease;
+      margin-bottom: -1px;
+    }
+
+
+    .filter-btn:hover { color: #000; }
+
+
+    .filter-btn.active {
+      color: #000;
+      border-bottom-color: #000;
+    }
+
+
+    /* Main */
+    .main-content {
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+
+
+    /* Project cards */
+    .project-card {
+      display: block;
+      padding: 2rem 0;
+      border-bottom: 1px solid #000;
+    }
+
+
+    .project-card:first-child { border-top: 1px solid #000; }
+
+
+    .project-card.hidden { display: none; }
+
+
+    .project-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      margin: 0 0 0.35rem 0;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      text-align: left;
+    }
+
+
+    .project-image-wrap { width: 100%; margin: 0; }
+
+
+    .project-image-wrap + .project-image-wrap { margin-top: 0.75rem; }
+
+
+    .project-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+    .project-image-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #999;
+      letter-spacing: 0.05em;
+    }
+
+
+    /* GIF grid */
+    .gif-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.5rem;
+      margin: 0;
+    }
+
+
+    .gif-grid-cell {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #f0f0f0;
+      position: relative;
+    }
+
+
+    .gif-grid-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    .gif-grid-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #999;
+      letter-spacing: 0.05em;
+    }
+
+
+    .project-byline {
+      font-size: 0.78rem;
+      color: #555;
+      margin: 0.45rem 0 0 0;
+      text-align: left;
+    }
+
+
+    .project-body-wrap {
+      width: 100%;
+      margin-top: 1.2rem;
+    }
+
+
+    .project-label {
+      font-size: 0.72rem;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0.9rem 0 0.15rem 0;
+    }
+
+
+    .project-label:first-child { margin-top: 0; }
+
+
+    .project-body {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+
+    /* Footer */
+    .site-footer { border-top: 1px solid #000; }
+
+
+    .footer-container {
+      font-size: 0.72rem;
+      line-height: 1.4;
+      padding-top: 1.2rem;
+      padding-bottom: 2rem;
+    }
+
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-container { display: none; }
+      .hamburger { display: block; }
+      .brand h1 { font-size: 1.8rem; }
+      body { font-size: 0.88rem; }
+      .gif-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <div class="brand">
+    <h1>
+      <a href="index.html" aria-label="Emily Reardon" id="name-anchor">
+        <span class="letter" style="--i:0"  data-slot="0">E</span><span
+             class="letter" style="--i:1"  data-slot="1">m</span><span
+             class="letter" style="--i:2"  data-slot="2">i</span><span
+             class="letter" style="--i:3"  data-slot="3">l</span><span
+             class="letter" style="--i:4"  data-slot="4">y</span><span
+             class="space">&nbsp;</span><span
+             class="letter" style="--i:5"  data-slot="5">R</span><span
+             class="letter" style="--i:6"  data-slot="6">e</span><span
+             class="letter" style="--i:7"  data-slot="7">a</span><span
+             class="letter" style="--i:8"  data-slot="8">r</span><span
+             class="letter" style="--i:9"  data-slot="9">d</span><span
+             class="letter" style="--i:10" data-slot="10">o</span><span
+             class="letter" style="--i:11" data-slot="11">n</span>
+      </a>
+    </h1>
+    <p class="tagline">Design for Futures That Love Us</p>
+  </div>
+
+
+  <nav class="nav-container" id="nav-container">
+    <ul class="nav-links">
+      <li><a href="projects.html" class="current">Projects</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="Emily Reardon_CV.pdf" target="_blank">CV</a></li>
+    </ul>
+  </nav>
+
+
+  <label for="menu-toggle" class="hamburger">&#9776;</label>
+</header>
+
+
+<!-- Filter bar -->
+<div class="filter-bar" id="filter-bar">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="personal">Personal</button>
+  <button class="filter-btn" data-filter="professional">Professional</button>
+</div>
+
+
+<main class="main-content" id="projects-list"></main>
+
+
+<footer class="site-footer">
+  <div class="footer-container">
+    &#169; 2026 Emily Reardon. Intentionally simple, designed for durability, guided by open and ethical practices. Made with HTML, CSS, and Git.
+  </div>
+</footer>
+
+
+<script>
+  /* ── Project data ── */
+  const projects = [
+    /* ── PERSONAL ── */
+    {
+      id: "PER_001",
+      type: "personal",
+      title: "Ethical AI: Intimacy as Infrastructure",
+      year: "2025",
+      tools: "Custom AI, Projection, Mobile, AutoLume, TouchDesigner, OSC",
+      rationale: "The work treats lovingly-given sentimental expression and emotion as well as embodiment and presence as computational inputs. Human traces are compressed and recombined into emergent relations, proposing machine learning at the scale of encounter rather than extraction. The project contributes to growing movements for public-interest and non-extractive AI by modeling intimacy, reciprocity, and care as infrastructure.",
+      description: "A compact AI was trained on a collection of roughly 500 deeply personal bestowed (rather than extracted) items using AutoLume. Its responses are projected through a three-foot crystal-and-metal mobile, creating a shifting, luminous experience. Viewers interact with the piece through facial expressions and full-body movements via OSC, which influence the AI's behavior in real time. The interactions are orchestrated in TouchDesigner and communicated through a Local Area Network, making the experience fully offline and self-contained.",
+      role: "Entire project.",
+      imagePaths: [
+        "images/personal/EmilyReardon_AIAsIntimacy",
+        "images/personal/EmilyReardon_AIAsIntimacyProcess"
+      ],
+      gifPaths: null
+    },
+    {
+      id: "PER_002",
+      type: "personal",
+      title: "Projection Mapping Experiments",
+      year: "2026",
+      tools: "MadMapper",
+      rationale: "This experimental series is a first foray into projection mapping. Both my art and design practices marry digital and analog, and controlling light, while removing screen hardware felt liberating. I'm eager to make more formal work using this medium.",
+      description: "I participated in a two day intensive workshop using MadMapper, producing three experiments:\n\n1) Geometric mapping built onto black-and-white schematic.\n\n2) Collaborative mapping integrated into whiteboard sketches.\n\n3) An immersive homage to any artist. For this I created Wavelengths, For Chris Wood (https://www.chriswoodlight.art). It's a prism sculpture with projection-mapped light that orders the accidental and invites reflection on the experience of seeing. While I learned heaps, all work is unfinished and the photos aren't ideal. For Wavelengths I'm particularly interested in playing with materials to better reflect the colors of Wood's light sculptures, and to add ambient interactivity via TouchDesigner and OSC.",
+      role: "",
+      imagePaths: ["images/personal/EmilyReardon_ProjectionMapping"],
+      gifPaths: null
+    },
+    {
+      id: "PER_003",
+      type: "personal",
+      title: "Latent Curricula Computational Tiny Prints",
+      year: "2026",
+      tools: "In-progress. Found and shared 'love curriculum' experiments in Cavalry / Typeflow / Typeface Animator.",
+      rationale: "If the universe is the syllabus, how do we study love as liberation? Drawn from songs, texts, streets, and dialogue, these curricular fragments bend at the edge of legibility.\n\nPrintmaking has long fueled social action. When small-scale and personal tiny prints mix with technology, what new scales of reach, participation, and impact become possible?",
+      description: "Over a few days I noted encounters that might serve as curricula for radical love, the idea that love (beyond romantic or familial love) is important in places where it historically been sidelined or avoided, such as in classrooms, workplaces, politics, and beyond. The snippets I collected -- lyrics to Prince's I Would Die For You, a photo of a stickie note posted in the Union Square subway after Trump's first presidential election, an excerpt from an overheard conversation, an excerpt from an interview with Ian McKellen, a quote from Dr. Cornel West -- are reimagined as digital tiny prints: little messages and protests to share.",
+      role: "Entire project.",
+      imagePaths: null,
+      gifPaths: [
+        "images/personal/EmilyReardon_Latent Curricula1_pangsofcloseness.gif",
+        "images/personal/EmilyReardon_Latent Curricula2_recoveryismorethan.gif",
+        "images/personal/EmilyReardon_Latent Curricula3_ImnotahumanIamdove.gif",
+        "images/personal/EmilyReardon_Latent Curricula4_JusticeLovePublic.gif",
+        "images/personal/EmilyReardon_Latent Curricula5_riseUp.gif",
+        "images/personal/EmilyReardon_Latent Curricula6_girlspeaklouder.gif",
+        "images/personal/EmilyReardon_Latent Curricula7_lovecoverseverything.gif",
+        "images/personal/EmilyReardon_Latent Curricula8_midddlefthestory.gif"
+      ]
+    },
+    /* ── PROFESSIONAL ── */
+    {
+      id: "PRO_001",
+      type: "professional",
+      title: "Grover's Block Party",
+      year: "2013",
+      tools: "Analog-Digital Hybrid, Traditional Playthings, Augmented Reality",
+      rationale: "Young children's deep, imaginative play with traditional toys—like blocks—builds critical skills, but screens often pull them away. How might we harness kids' attraction to technology to restore the rich benefits of deep play, make foundational literacy more engaging, and shift tech's role from directing play to following the child's lead—deepening engagement and fostering learning?",
+      description: "Kids play with letter blocks on a playdate with Grover & 26 Letter Muppets. Grover & letter Muppets react to child-led play -- noticing, commenting, questioning, singing, serving up letter videos, & more, to scaffold experimentation & deepen learning.\n\nComputer vision 'watches'. Dynamic 'mood' tagging automatically animates Grover. Augmented reality enables Grover & letter Muppets to scaffold player. Adaptive personalized patterns & scaffolds drawn from learning science grow with kids play.\n\nFormative research included iterative in-house play sessions to define a taxonomy of play patterns (pictured here). Summative research included providing families with these sets as well as non-AR off the shelf block sets, pre/post focus groups, Dscout video recordings matched to behavioral data coded together.",
+      role: "Responsible for: Entire project, including concepting, pitching, system design, technology innovation lead, with minimal art direction.",
+      imagePaths: ["images/professional/EmilyReardon_GroversBlockParty"],
+      gifPaths: null
+    },
+    {
+      id: "PRO_002",
+      type: "professional",
+      title: "Sesame Street Family Play",
+      year: "2013",
+      tools: "iPhone & Android phone App for caretakers of young kids.",
+      rationale: "How might we leverage parents' everyday phone use to promote off-screen family connection and address the persistent challenges of daily caregiving—such as tooth-brushing, waiting in line, or bedtime—when emotional intensity is common? In what ways might play function as an intervention to help parents reduce reliance on screens while strengthening their capacity for self-regulation and responsive caregiving?",
+      description: "Kids and grown ups play off-screen games together. Game ideas and rules are generated by the grown up on their phone, based on current setting (from in the tubby, to at the dentist, to at a restaurant, to waiting at a bus stop), number of players, and available props. Grown ups deliver the game in real time—through voice, props, and imagination—not devices. Games transform \"have to\" moments into shared joy, strengthening bonds. As grown-ups gain confidence in creating play, they rely less on the app and more on their own spontaneity.",
+      role: "Responsible for: Concepting, pitching, play experience & system design, play research. Phone app built on 3rd party game engine.",
+      imagePaths: ["images/professional/EmilyReardon_SesameStreetFamilyPlay"],
+      gifPaths: null
+    },
+    {
+      id: "PRO_003",
+      type: "professional",
+      title: "Sesame Street Playset",
+      year: "2012",
+      tools: "Analog-Digital Hybrid, Traditional Playthings, Augmented Reality",
+      rationale: "How might we harness kids' attraction to screens to restore—not erode—the rich, research-backed benefits of deep play with traditional playthings? How might we nurture imaginative play, perspective-taking, and empathy by offering scaffolded, safe spaces to practice these skills? How might we reframe technology's role in young children's play—from directing it to following the child's lead, deepening engagement, and fostering learning?",
+      description: "Kids play with a physical Sesame Street playset. If viewed through an iPad, the arrangement of Muppets, objects, settings spark open-ended and goal directed imaginative play scaffolds to help build creativity, practice social and emotional skills, & deepen empathy.\n\nComputer vision 'watches'. Augmented reality enables Muppets to animate and talk to scaffold player's imaginative play. Adaptive personalized patterns & scaffolds drawn from learning science grow with kids play.",
+      role: "Responsible for: Entire project, including concepting, pitching, system design, technology innovation lead.",
+      imagePaths: ["images/professional/EmilyReardon_SesameStreetPlayset"],
+      gifPaths: null
+    },
+    {
+      id: "PRO_004",
+      type: "professional",
+      title: "The Electric Company",
+      year: "2010",
+      tools: "Cross-platform literacy ecosystem including website, TV show, and comic book series",
+      rationale: "Kids who aren't reading at grade level by fourth grade often struggle to make the critical shift from learning to read to reading to learn—a turning point strongly tied to long-term academic outcomes. We reimagined The Electric Company as a transmedia literacy experience designed to reach struggling readers ages six to nine where they already were: online and playing games.",
+      description: "Kids use the website to play digital games, watch videos, and more. The digital hub and transmedia narrative connects to and from the PBS television series and comicbook set. The unified literacy ecosystem featured artists including Common, Lin-Manuel Miranda, and Reggie Watts.",
+      role: "Responsible for: Directed the experience design— shaping narrative and play-based active learning while producing the technical specifications, logic flows, wireframes, and user flows, and leading playtesting with children across the United States. My work on the project received an Emmy Award.",
+      imagePaths: ["images/professional/EmilyReardon_TheElectricCompany"],
+      gifPaths: null
+    }
+  ];
+
+
+  /* ── Extension fallback for non-GIF images ── */
+  const EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
+
+
+  function tryLoadImage(basePath, exts, imgEl, placeholder) {
+    if (exts.length === 0) {
+      imgEl.style.display = 'none';
+      if (placeholder) placeholder.style.display = 'flex';
+      return;
+    }
+    const [next, ...rest] = exts;
+    const handler = () => { imgEl.onload = null; imgEl.onerror = null; };
+    imgEl.onload = () => {
+      handler();
+      if (placeholder && placeholder.parentNode) placeholder.parentNode.removeChild(placeholder);
+      imgEl.style.display = 'block';
+    };
+    imgEl.onerror = () => { handler(); tryLoadImage(basePath, rest, imgEl, placeholder); };
+    imgEl.src = basePath + next;
+  }
+
+
+  /* ── Build a standard image wrap (extension-tried) ── */
+  function buildImageWrap(basePath, altText) {
+    const wrap = document.createElement('div');
+    wrap.className = 'project-image-wrap';
+
+
+    const placeholder = document.createElement('div');
+    placeholder.className = 'project-image-placeholder';
+    placeholder.textContent = 'image';
+
+
+    const img = document.createElement('img');
+    img.className = 'project-image';
+    img.alt = altText;
+    img.style.display = 'none';
+
+
+    wrap.appendChild(placeholder);
+    wrap.appendChild(img);
+    tryLoadImage(basePath, [...EXTS], img, placeholder);
+    return wrap;
+  }
+
+
+  /* ── Build a GIF grid ── */
+  function buildGifGrid(gifPaths, altText) {
+    const grid = document.createElement('div');
+    grid.className = 'gif-grid';
+
+
+    gifPaths.forEach(function(src) {
+      const cell = document.createElement('div');
+      cell.className = 'gif-grid-cell';
+
+
+      const ph = document.createElement('div');
+      ph.className = 'gif-grid-placeholder';
+      ph.textContent = 'loading';
+
+
+      const img = document.createElement('img');
+      img.alt = altText;
+      img.style.display = 'none';
+      img.onload = function() {
+        img.onload = null;
+        img.onerror = null;
+        if (ph.parentNode) ph.parentNode.removeChild(ph);
+        img.style.display = 'block';
+      };
+      img.onerror = function() {
+        img.onload = null;
+        img.onerror = null;
+        img.style.display = 'none';
+        ph.textContent = 'image';
+      };
+      img.src = src;
+
+
+      cell.appendChild(ph);
+      cell.appendChild(img);
+      grid.appendChild(cell);
+    });
+
+
+    return grid;
+  }
+
+
+  /* ── Render ── */
+  function renderProjects() {
+    const container = document.getElementById('projects-list');
+
+
+    projects.forEach(function(p) {
+      const card = document.createElement('article');
+      card.className = 'project-card';
+      card.dataset.type = p.type;
+
+
+      /* title */
+      const title = document.createElement('h2');
+      title.className = 'project-title';
+      title.textContent = p.title;
+      card.appendChild(title);
+
+
+      /* media: gif grid OR one/two standard images */
+      if (p.gifPaths && p.gifPaths.length) {
+        card.appendChild(buildGifGrid(p.gifPaths, p.title));
+      } else if (p.imagePaths && p.imagePaths.length) {
+        p.imagePaths.forEach(function(basePath) {
+          card.appendChild(buildImageWrap(basePath, p.title));
+        });
+      }
+
+
+      /* byline */
+      const byline = document.createElement('p');
+      byline.className = 'project-byline';
+      byline.textContent = p.year + ', ' + p.tools;
+      card.appendChild(byline);
+
+
+      /* body copy */
+      const bodyWrap = document.createElement('div');
+      bodyWrap.className = 'project-body-wrap';
+
+
+      let bodyHTML =
+        '<p class="project-label">Rationale</p>' +
+        '<p class="project-body">' + p.rationale.replace(/\n/g, '<br>') + '</p>' +
+        '<p class="project-label">Project Description</p>' +
+        '<p class="project-body">' + p.description.replace(/\n/g, '<br>') + '</p>';
+
+
+      if (p.role) {
+        bodyHTML +=
+          '<p class="project-label">My Role</p>' +
+          '<p class="project-body">' + p.role + '</p>';
+      }
+
+
+      bodyWrap.innerHTML = bodyHTML;
+      card.appendChild(bodyWrap);
+      container.appendChild(card);
+    });
+
+
+    updateFirstVisibleBorder();
+  }
+
+
+  /* ── Filter logic ── */
+  function updateFirstVisibleBorder() {
+    const cards = document.querySelectorAll('.project-card');
+    let foundFirst = false;
+    cards.forEach(function(card) {
+      card.style.borderTop = '';
+      if (!card.classList.contains('hidden') && !foundFirst) {
+        card.style.borderTop = '1px solid #000';
+        foundFirst = true;
+      }
+    });
+  }
+
+
+  function applyFilter(filter) {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(function(card) {
+      if (filter === 'all' || card.dataset.type === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    updateFirstVisibleBorder();
+  }
+
+
+  document.getElementById('filter-bar').addEventListener('click', function(e) {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    applyFilter(btn.dataset.filter);
+  });
+
+
+  renderProjects();
+
+
+
+
+  /* ── Dot animation ── */
+  const MAX_DOTS  = 7;
+  const NUM_SLOTS = 12;
+
+
+  function buildSlotPool() {
+    const pool = [];
+    const firstNameWeight = 10;
+    const lastNameWeight  = 3;
+    for (let i = 0; i < NUM_SLOTS; i++) {
+      const w = i <= 4 ? firstNameWeight : lastNameWeight;
+      for (let k = 0; k < w; k++) pool.push(i);
+    }
+    return pool;
+  }
+  const SLOT_POOL = buildSlotPool();
+
+
+  function randomSlot() {
+    return SLOT_POOL[Math.floor(Math.random() * SLOT_POOL.length)];
+  }
+
+
+  let liveSlots = new Map();
+  let frontier  = 0;
+
+
+  function getLetterSpan(slotIndex) {
+    return document.querySelector('[data-slot="' + slotIndex + '"]');
+  }
+
+
+  const SIZES = ['sz-sm', 'sz-md', 'sz-lg'];
+
+
+  function createDot(letterSpan) {
+    const dot = document.createElement('span');
+    dot.className = 'period-dot ' + SIZES[Math.floor(Math.random() * SIZES.length)];
+    letterSpan.parentNode.insertBefore(dot, letterSpan.nextSibling);
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() { dot.classList.add('visible'); });
+    });
+    return dot;
+  }
+
+
+  function removeDot(dot) {
+    dot.classList.remove('visible');
+    dot.addEventListener('transitionend', function() { dot.remove(); }, { once: true });
+  }
+
+
+  function totalDots() {
+    let n = 0;
+    liveSlots.forEach(function(arr) { n += arr.length; });
+    return n;
+  }
+
+
+  function step() {
+    const total     = totalDots();
+    const canAdd    = total < MAX_DOTS;
+    const canRemove = total > 0;
+    let action;
+    const r = Math.random();
+
+
+    if (!canAdd && canRemove) {
+      action = r < 0.5 ? 'remove' : 'shift';
+    } else if (!canRemove) {
+      action = 'add';
+    } else {
+      if (r < 0.45)      action = 'add';
+      else if (r < 0.72) action = 'shift';
+      else               action = 'remove';
+    }
+
+
+    if (action === 'add')         { doAdd(); }
+    else if (action === 'remove') { doRemove(); }
+    else                          { doRemove(); doAdd(); }
+  }
+
+
+  function doAdd() {
+    let targetSlot;
+    const scatter = Math.random() < 0.22;
+
+
+    if (scatter) {
+      targetSlot = randomSlot();
+    } else {
+      const advance = Math.floor(Math.random() * 4);
+      targetSlot = (frontier + advance) % NUM_SLOTS;
+      if (targetSlot > 4 && Math.random() < 0.70) {
+        targetSlot = Math.floor(Math.random() * 5);
+      }
+    }
+
+
+    const existing = liveSlots.get(targetSlot) || [];
+    if (existing.length >= 2) {
+      targetSlot = (targetSlot + 1) % NUM_SLOTS;
+    }
+
+
+    const letterSpan = getLetterSpan(targetSlot);
+    if (!letterSpan) return;
+
+
+    const dot = createDot(letterSpan);
+    if (!liveSlots.has(targetSlot)) liveSlots.set(targetSlot, []);
+    liveSlots.get(targetSlot).push(dot);
+    frontier = targetSlot;
+  }
+
+
+  function doRemove() {
+    if (liveSlots.size === 0) return;
+    const slots    = Array.from(liveSlots.keys()).sort(function(a, b) { return a - b; });
+    const pickLeft = Math.random() < 0.65;
+    const targetSlot = pickLeft
+      ? slots[0]
+      : slots[Math.floor(Math.random() * slots.length)];
+
+
+    const arr = liveSlots.get(targetSlot);
+    if (!arr || arr.length === 0) return;
+
+
+    const dot = arr.shift();
+    removeDot(dot);
+    if (arr.length === 0) liveSlots.delete(targetSlot);
+  }
+
+
+  function scheduleNext() {
+    let delay;
+    const r = Math.random();
+    if (r < 0.12) {
+      delay = 3000 + Math.random() * 2000;
+    } else if (r < 0.30) {
+      delay = 800 + Math.random() * 400;
+    } else {
+      delay = 1200 + Math.random() * 800;
+    }
+    setTimeout(function() { step(); scheduleNext(); }, delay);
+  }
+
+
+  function init() {
+    const seedSlots = [1, 3, 4];
+    seedSlots.forEach(function(s) {
+      const letterSpan = getLetterSpan(s);
+      if (!letterSpan) return;
+      const dot = createDot(letterSpan);
+      if (!liveSlots.has(s)) liveSlots.set(s, []);
+      liveSlots.get(s).push(dot);
+    });
+    frontier = 4;
+    scheduleNext();
+  }
+
+
+  init();
+
+
+  const hamburger    = document.querySelector('.hamburger');
+  const navContainer = document.getElementById('nav-container');
+  if (hamburger && navContainer) {
+    hamburger.addEventListener('click', function() {
+      const isVisible = navContainer.style.display === 'flex';
+      navContainer.style.display = isVisible ? 'none' : 'flex';
+    });
+  }
+</script>
+
+
+</body>
+</html>

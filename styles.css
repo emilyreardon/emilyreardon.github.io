@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emily Reardon | Landing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,700&family=Josefin+Sans:wght@300&family=Poiret+One&family=Metamorphous&display=swap" rel="stylesheet">
+  <style>
+    /* ==============================
+       Base Styles
+       ============================== */
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #111;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      font-size: 0.9rem;
+    }
+
+
+    .site-header,
+    .main-content,
+    .footer-container {
+      max-width: 900px;
+      margin: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+
+    /* ==============================
+       Header
+       ============================== */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #000;
+    }
+
+
+    .brand h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 0.12rem;
+    }
+
+
+    .brand h1 a {
+      text-decoration: none;
+      color: #000;
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: nowrap;
+    }
+
+
+    .brand h1 a:hover {
+      opacity: 0.7;
+    }
+
+
+    .tagline {
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+
+    /* ==============================
+       Animation Styles
+       ============================== */
+    :root {
+      --cycle-duration: 32s;
+      --stagger-step: 2.5s;
+    }
+
+
+    .name-animated {
+      display: inline-block;
+    }
+
+
+    .letter {
+      display: inline-block;
+      animation: name-font-cycle var(--cycle-duration) steps(1) infinite;
+    }
+
+
+    @keyframes name-font-cycle {
+      0%   { font-family: "Fraunces", serif; }
+      25%  { font-family: "Josefin Sans", sans-serif; }
+      50%  { font-family: "Poiret One", cursive; }
+      75%  { font-family: "Metamorphous", serif; }
+      100% { font-family: "Fraunces", serif; }
+    }
+
+
+    .letter {
+      animation-delay: calc(var(--i) * var(--stagger-step) * -1);
+    }
+
+
+    /* ==============================
+       Navigation
+       ============================== */
+    .nav-container {
+      display: flex;
+    }
+
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      position: relative;
+    }
+
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      left: 0;
+      bottom: -3px;
+      background-color: #000;
+      transition: width 0.25s ease;
+    }
+
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+
+    /* ==============================
+       Main Content
+       ============================== */
+    .main-content {
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+
+
+    .main-content p {
+      margin-bottom: 1rem;
+    }
+
+
+    /* ==============================
+       Section Headers
+       ============================== */
+    .section-header {
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+
+
+    .section-header::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: #000;
+      margin-top: 0.35rem;
+    }
+
+
+    .course-author {
+      font-weight: bold;
+    }
+
+
+    h2.section-header {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+
+    /* ==============================
+       Footer
+       ============================== */
+    .footer-container {
+      font-size: 0.72rem;
+      line-height: 1.4;
+      padding-top: 1.2rem;
+      padding-bottom: 2rem;
+      border-top: 1px solid #000;
+    }
+
+
+    /* ==============================
+       Mobile Styles
+       ============================== */
+    @media (max-width: 768px) {
+      .nav-container {
+        display: none;
+      }
+
+
+      .hamburger {
+        display: block;
+      }
+
+
+      .brand h1 {
+        font-size: 1.8rem;
+      }
+
+
+      body {
+        font-size: 0.88rem;
+      }
+    }
+
+
+    /* ==============================
+       Period Dot — baseline anchor
+       Sits exactly where a typed period
+       sits in body copy: bottom of the
+       em square, zero vertical offset.
+       ============================== */
+    .period-dot {
+      display: inline-block;
+      border-radius: 50%;
+      background-color: currentColor;
+      /* Baseline alignment matches a real period in copy */
+      vertical-align: baseline;
+      /* No top shift — a real period has none */
+      position: static;
+      /* Tight spacing like a real period */
+      margin-left: 0.02em;
+      margin-right: 0.02em;
+      /* Size variants set by class */
+      opacity: 0;
+      transition: opacity 0.55s ease;
+      pointer-events: none;
+      /* Prevent dot from stretching the line height */
+      line-height: 0;
+    }
+
+
+    .period-dot.visible {
+      opacity: 1;
+    }
+
+
+    /* Three sizes — all feel like copy-level punctuation */
+    .period-dot.sz-sm {
+      width: 0.12em;
+      height: 0.12em;
+    }
+
+
+    .period-dot.sz-md {
+      width: 0.18em;
+      height: 0.18em;
+    }
+
+
+    .period-dot.sz-lg {
+      width: 0.26em;
+      height: 0.26em;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">
+      <h1>
+        <a href="index.html" aria-label="Emily Reardon" id="name-anchor">
+          <span class="letter" style="--i:0" data-slot="0">E</span><span
+               class="letter" style="--i:1" data-slot="1">m</span><span
+               class="letter" style="--i:2" data-slot="2">i</span><span
+               class="letter" style="--i:3" data-slot="3">l</span><span
+               class="letter" style="--i:4" data-slot="4">y</span><span
+               class="space">&nbsp;</span><span
+               class="letter" style="--i:5" data-slot="5">R</span><span
+               class="letter" style="--i:6" data-slot="6">e</span><span
+               class="letter" style="--i:7" data-slot="7">a</span><span
+               class="letter" style="--i:8" data-slot="8">r</span><span
+               class="letter" style="--i:9" data-slot="9">d</span><span
+               class="letter" style="--i:10" data-slot="10">o</span><span
+               class="letter" style="--i:11" data-slot="11">n</span>
+        </a>
+      </h1>
+      <p class="tagline">Design for Futures That Love Us</p>
+    </div>
+
+
+    <nav class="nav-container" id="nav-container">
+      <ul class="nav-links">
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="Emily Reardon_CV.pdf" target="_blank">CV</a></li>
+      </ul>
+    </nav>
+
+
+    <label for="menu-toggle" class="hamburger">&#9776;</label>
+  </header>
+
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="intro">
+      <p>I design, make, and study digital systems and experiences that help people grow, connect, and participate in the world around them.</p>
+      <p>Working between the material and the technical, my practice draws from craft, play, storytelling, learning, community collaboration, and public media. I create analog&#8211;digital hybrid systems that invite participation rather than passive consumption, cultivating agency, belonging, and care.</p>
+      <p>I approach design as optimistic curiosity and building tools, environments, and experiences that people can explore, question, and reshape together. Through prototypes, participatory workshops, and experimental media, my work foregrounds experimentation, learning, and collective imagination.</p>
+      <p>Grounded in open and ethical tools and processes, my experiments ask how digital technologies might deepen, rather than displace, our relationships with one another and with the worlds we inhabit. I design toward systems that expand participation and help communities imagine more just and loving futures.</p>
+    </section>
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="footer-container">
+    <div class="main-content">
+      &#169; 2026 Emily Reardon. Intentionally simple, designed for durability, guided by open and ethical practices. Made with HTML, CSS, and Git.
+    </div>
+  </footer>
+
+
+  <script>
+    // ─────────────────────────────────────────────
+    // Period dot animation
+    // Dots sit at the typographic baseline —
+    // same position as a period in running copy.
+    // Three size classes: sz-sm, sz-md, sz-lg
+    // ─────────────────────────────────────────────
+
+
+    const MAX_DOTS  = 7;
+    const NUM_SLOTS = 12;
+    const SIZES     = ['sz-sm', 'sz-sm', 'sz-md', 'sz-md', 'sz-lg'];
+
+
+    let liveSlots = new Map();
+    let frontier  = 0;
+
+
+    function buildSlotPool() {
+      const pool = [];
+      for (let i = 0; i < NUM_SLOTS; i++) {
+        const distFromCenter = Math.abs(i - 5.5) / 5.5;
+        const w = Math.round((1 - distFromCenter * 0.4) * 8);
+        for (let k = 0; k < w; k++) pool.push(i);
+      }
+      return pool;
+    }
+    const SLOT_POOL = buildSlotPool();
+
+
+    function randomSlot() {
+      return SLOT_POOL[Math.floor(Math.random() * SLOT_POOL.length)];
+    }
+
+
+    function randomSize() {
+      return SIZES[Math.floor(Math.random() * SIZES.length)];
+    }
+
+
+    function getLetterSpan(i) {
+      return document.querySelector(`[data-slot="${i}"]`);
+    }
+
+
+    function createDot(letterSpan) {
+      const dot = document.createElement('span');
+      dot.className = 'period-dot ' + randomSize();
+      letterSpan.parentNode.insertBefore(dot, letterSpan.nextSibling);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => dot.classList.add('visible'));
+      });
+      return dot;
+    }
+
+
+    function removeDot(dot) {
+      dot.classList.remove('visible');
+      dot.addEventListener('transitionend', () => dot.remove(), { once: true });
+    }
+
+
+    function totalDots() {
+      let n = 0;
+      liveSlots.forEach(arr => { n += arr.length; });
+      return n;
+    }
+
+
+    function doAdd() {
+      let targetSlot;
+      if (Math.random() < 0.22) {
+        targetSlot = randomSlot();
+      } else {
+        const advance = Math.floor(Math.random() * 4);
+        targetSlot = (frontier + advance) % NUM_SLOTS;
+      }
+
+
+      const existing = liveSlots.get(targetSlot) || [];
+      if (existing.length >= 2) {
+        targetSlot = (targetSlot + 1) % NUM_SLOTS;
+      }
+
+
+      const span = getLetterSpan(targetSlot);
+      if (!span) return;
+
+
+      const dot = createDot(span);
+      if (!liveSlots.has(targetSlot)) liveSlots.set(targetSlot, []);
+      liveSlots.get(targetSlot).push(dot);
+      frontier = targetSlot;
+    }
+
+
+    function doRemove() {
+      if (liveSlots.size === 0) return;
+      const slots = Array.from(liveSlots.keys()).sort((a, b) => a - b);
+      const pickLeft = Math.random() < 0.65;
+      const targetSlot = pickLeft ? slots[0] : slots[Math.floor(Math.random() * slots.length)];
+      const arr = liveSlots.get(targetSlot);
+      if (!arr || arr.length === 0) return;
+      const dot = arr.shift();
+      removeDot(dot);
+      if (arr.length === 0) liveSlots.delete(targetSlot);
+    }
+
+
+    function step() {
+      const total    = totalDots();
+      const canAdd   = total < MAX_DOTS;
+      const canRemove = total > 0;
+      let action;
+      const r = Math.random();
+
+
+      if (!canAdd && canRemove) {
+        action = r < 0.5 ? 'remove' : 'shift';
+      } else if (!canRemove) {
+        action = 'add';
+      } else {
+        if (r < 0.45)      action = 'add';
+        else if (r < 0.72) action = 'shift';
+        else               action = 'remove';
+      }
+
+
+      if      (action === 'add')    { doAdd(); }
+      else if (action === 'remove') { doRemove(); }
+      else                          { doRemove(); doAdd(); }
+    }
+
+
+    function scheduleNext() {
+      let delay;
+      const r = Math.random();
+      if (r < 0.12)      delay = 3000 + Math.random() * 2000;
+      else if (r < 0.30) delay = 800  + Math.random() * 400;
+      else               delay = 1200 + Math.random() * 800;
+
+
+      setTimeout(() => { step(); scheduleNext(); }, delay);
+    }
+
+
+    function init() {
+      const seedSlots = [1, 5, 9];
+      seedSlots.forEach(s => {
+        const span = getLetterSpan(s);
+        if (!span) return;
+        const dot = createDot(span);
+        if (!liveSlots.has(s)) liveSlots.set(s, []);
+        liveSlots.get(s).push(dot);
+      });
+      frontier = 9;
+      scheduleNext();
+    }
+
+
+    init();
+
+
+    // Hamburger
+    const hamburger    = document.querySelector('.hamburger');
+    const navContainer = document.getElementById('nav-container');
+    if (hamburger && navContainer) {
+      hamburger.addEventListener('click', () => {
+        const isVisible = navContainer.style.display === 'flex';
+        navContainer.style.display = isVisible ? 'none' : 'flex';
+      });
+    }
+  </script>
+</body>
+</html>
