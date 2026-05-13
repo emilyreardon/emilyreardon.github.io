@@ -408,6 +408,19 @@
   const projects = [
     /* ── PERSONAL ── */
     {
+      id: "PER_000",
+      type: "personal",
+      title: "Scituate Harbor Perimeter: Ecoacoustic Study",
+      year: "2026",
+      tools: "iPhone Voice Memos, Audacity, After Effects, sun printing, OpenStreetMap.org",
+      rationale: "This work is made from a heart-shaped harbor in southeastern Massachusetts, viewable from my window. My family has lived by it for generations; my mother's funeral was held at the town marina on its edge, her ashes returned to tide. This work explores relationships between place, people, memory, and belonging. It considers how landscapes hold personal histories, grief, ritual, and everyday life all at once.",
+      description: "A four-minute, one-second, and twenty-two-hundredths-of-a-second ambient audiovisual composition centered on Scituate Harbor, Massachusetts. The runtime corresponds to the date my mother's ashes entered the harbor tide. This shifting audio portrait is a meditation on tidal movement, return, and the overlapping of memory.\n\nField recordings collected in May 2026 along the perimeter of Scituate Harbor. Audio captured on iPhone Voice Memos, composed and mixed in Audacity (free, open-source). Video collected on iPhone. Sun prints made by laying harbor objects — shells, seaweed, sea glass, reeds, small bits of metal — on light-sensitive paper in the sun. Open geographic coastal plot points accessed via OpenStreetMap.org. Work compiled in After Effects.\n\nAerial imagery via marinas.com and Pinterest; creators unknown.",
+      role: "Entire project.",
+      videoPaths: ["images/personal/Emily Reardon_Scituate Harbor Ecoacoustic Study.mp4"],
+      imagePaths: null,
+      gifPaths: null
+    },
+    {
       id: "PER_001",
       type: "personal",
       title: "Ethical AI: Intimacy as Infrastructure",
@@ -553,6 +566,27 @@
   }
 
 
+  /* ── Build a video wrap ── */
+  function buildVideoWrap(src, altText) {
+    const wrap = document.createElement('div');
+    wrap.className = 'project-image-wrap';
+    const video = document.createElement('video');
+    video.className = 'project-image';
+    video.controls = true;
+    video.preload = 'metadata';
+    video.style.width = '100%';
+    video.style.height = 'auto';
+    video.style.display = 'block';
+    video.setAttribute('aria-label', altText);
+    const source = document.createElement('source');
+    source.src = src;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    wrap.appendChild(video);
+    return wrap;
+  }
+
+
   /* ── Build a GIF grid ── */
   function buildGifGrid(gifPaths, altText) {
     const grid = document.createElement('div');
@@ -615,8 +649,12 @@
       card.appendChild(title);
 
 
-      /* media: gif grid OR one/two standard images */
-      if (p.gifPaths && p.gifPaths.length) {
+      /* media: video OR gif grid OR one/two standard images */
+      if (p.videoPaths && p.videoPaths.length) {
+        p.videoPaths.forEach(function(src) {
+          card.appendChild(buildVideoWrap(src, p.title));
+        });
+      } else if (p.gifPaths && p.gifPaths.length) {
         card.appendChild(buildGifGrid(p.gifPaths, p.title));
       } else if (p.imagePaths && p.imagePaths.length) {
         p.imagePaths.forEach(function(basePath) {
