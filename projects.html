@@ -574,16 +574,10 @@
     video.controls = true;
     video.preload = 'metadata';
     video.playsInline = true;
-    video.style.cssText = 'width:100%;height:auto;display:block;max-width:100%;';
+    video.style.cssText = 'width:100%;aspect-ratio:16/9;display:block;background:#000;';
     video.setAttribute('aria-label', altText);
-    // Encode spaces/special chars in path
-    const encodedSrc = src.split('/').map(function(part) {
-      return encodeURIComponent(part);
-    }).join('/');
-    const source = document.createElement('source');
-    source.src = encodedSrc;
-    source.type = 'video/mp4';
-    video.appendChild(source);
+    // Set src directly — let browser handle any spaces in path
+    video.src = src;
     wrap.appendChild(video);
     return wrap;
   }
