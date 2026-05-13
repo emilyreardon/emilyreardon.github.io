@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emily Reardon | Projects</title>
+
+
+<style>
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #111;
+  line-height: 1.55;
+  font-size: 0.9rem;
+}
+
+
+.main-content {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+
+/* Project cards */
+.project-card {
+  border-bottom: 1px solid #000;
+  padding: 2rem 0;
+}
+
+
+.project-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+
+/* Media */
+.project-image-wrap, video {
+  width: 100%;
+  display: block;
+  margin-top: 0.75rem;
+}
+
+
+.project-byline {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+
+/* Labels */
+.project-label {
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+
+.project-body {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.88rem;
+}
+
+
+/* GIF grid */
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.5rem;
+}
+
+
+.gif-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+</head>
+
+
+<body>
+
+
+<main class="main-content" id="projects-list"></main>
+
+
+<script>
+/* ─────────────────────────────
+   PROJECT DATA
+───────────────────────────── */
+
+
+const projects = [
+{
+  id: "PER_001",
+  type: "personal",
+  title: "Ethical AI: Intimacy as Infrastructure",
+  year: "2025",
+  tools: "AI, TouchDesigner, OSC",
+  rationale: "Explores intimacy as computational infrastructure.",
+  description: "Interactive AI system responding to embodied input.",
+  role: "Entire project.",
+  imagePaths: ["images/personal/ai1"],
+  gifPaths: null,
+  videoPaths: null
+},
+
+
+{
+  id: "PER_002",
+  type: "personal",
+  title: "Projection Mapping Experiments",
+  year: "2026",
+  tools: "MadMapper",
+  rationale: "Early experiments in projection mapping.",
+  description: "Three short experimental mapping studies.",
+  role: "",
+  imagePaths: ["images/personal/projection1"],
+  gifPaths: null,
+  videoPaths: null
+},
+
+
+/* ✅ NEW PROJECT (your Scituate Harbor work) */
+{
+  id: "PER_004",
+  type: "personal",
+  title: "Scituate Harbor Perimeter: Ecoacoustic Study",
+  year: "2026",
+  tools: "iPhone, Audacity, After Effects, OpenStreetMap",
+  rationale: "A coastal site held in personal and familial memory.",
+  description: "A sonic and visual composition built from field recordings, sun prints, and mapped coastal fragments of Scituate Harbor. The work traces listening, tide movement, and return.",
+  role: "Entire project.",
+  imagePaths: null,
+  gifPaths: null,
+  videoPaths: ["images/personal/scituate-harbor.mp4"]
+}
+];
+
+
+/* ─────────────────────────────
+   IMAGE LOADER
+───────────────────────────── */
+
+
+function buildImage(basePath) {
+  const img = document.createElement("img");
+  img.src = basePath + ".jpg";
+  img.onerror = () => {
+    img.src = basePath + ".png";
+  };
+  return img;
+}
+
+
+/* ─────────────────────────────
+   GIF GRID
+───────────────────────────── */
+
+
+function buildGifGrid(paths) {
+  const grid = document.createElement("div");
+  grid.className = "gif-grid";
+
+
+  paths.forEach(p => {
+    const img = document.createElement("img");
+    img.src = p;
+    grid.appendChild(img);
+  });
+
+
+  return grid;
+}
+
+
+/* ─────────────────────────────
+   VIDEO RENDERER (MP4 FIX)
+───────────────────────────── */
+
+
+function buildVideo(src) {
+  const video = document.createElement("video");
+  video.src = src;
+  video.controls = true;
+  video.autoplay = false;
+  video.loop = true;
+  video.playsInline = true;
+  return video;
+}
+
+
+/* ─────────────────────────────
+   RENDER
+───────────────────────────── */
+
+
+function renderProjects() {
+  const container = document.getElementById("projects-list");
+
+
+  projects.forEach(p => {
+    const card = document.createElement("article");
+    card.className = "project-card";
+
+
+    /* title */
+    const title = document.createElement("div");
+    title.className = "project-title";
+    title.textContent = p.title;
+    card.appendChild(title);
+
+
+    /* media */
+    if (p.videoPaths) {
+      p.videoPaths.forEach(v => {
+        card.appendChild(buildVideo(v));
+      });
+    }
+
+
+    if (p.gifPaths) {
+      card.appendChild(buildGifGrid(p.gifPaths));
+    }
+
+
+    if (p.imagePaths) {
+      p.imagePaths.forEach(i => {
+        card.appendChild(buildImage(i));
+      });
+    }
+
+
+    /* byline */
+    const byline = document.createElement("div");
+    byline.className = "project-byline";
+    byline.textContent = `${p.year} · ${p.tools}`;
+    card.appendChild(byline);
+
+
+    /* rationale */
+    const r = document.createElement("div");
+    r.className = "project-label";
+    r.textContent = "Rationale";
+    card.appendChild(r);
+
+
+    const rText = document.createElement("div");
+    rText.className = "project-body";
+    rText.innerHTML = p.rationale;
+    card.appendChild(rText);
+
+
+    /* description */
+    const d = document.createElement("div");
+    d.className = "project-label";
+    d.textContent = "Project Description";
+    card.appendChild(d);
+
+
+    const dText = document.createElement("div");
+    dText.className = "project-body";
+    dText.innerHTML = p.description;
+    card.appendChild(dText);
+
+
+    container.appendChild(card);
+  });
+}
+
+
+renderProjects();
+</script>
+
+
+</body>
+</html>

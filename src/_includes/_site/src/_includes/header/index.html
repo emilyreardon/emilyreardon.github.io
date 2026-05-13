@@ -1,0 +1,56 @@
+<header class="site-header">
+  <div class="brand">
+    <h1>
+      <a href="/" aria-label="Emily Reardon" id="name-anchor">
+        <span class="letter" style="--i:0" data-slot="0">E</span><span
+             class="letter" style="--i:1" data-slot="1">m</span><span
+             class="letter" style="--i:2" data-slot="2">i</span><span
+             class="letter" style="--i:3" data-slot="3">l</span><span
+             class="letter" style="--i:4" data-slot="4">y</span><span
+             class="space">&nbsp;</span><span
+             class="letter" style="--i:5" data-slot="5">R</span><span
+             class="letter" style="--i:6" data-slot="6">e</span><span
+             class="letter" style="--i:7" data-slot="7">a</span><span
+             class="letter" style="--i:8" data-slot="8">r</span><span
+             class="letter" style="--i:9" data-slot="9">d</span><span
+             class="letter" style="--i:10" data-slot="10">o</span><span
+             class="letter" style="--i:11" data-slot="11">n</span>
+      </a>
+    </h1>
+    <p class="tagline">Design for Futures That Love Us</p>
+  </div>
+
+
+  <!-- Hamburger button (JS controlled, no CSS display toggling conflicts) -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    ☰
+  </button>
+
+
+  <nav class="nav-container" id="nav-container">
+    <ul class="nav-links">
+      <li><a href="/projects.html">Projects</a></li>
+      <li><a href="/writing.html">Writing</a></li>
+      <li><a href="/teaching.html">Teaching</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/cv/Emily_Reardon_CV.pdf" target="_blank">CV</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<script>
+  // Robust hamburger toggle (prevents "sometimes shows desktop nav on mobile" bug)
+  (function () {
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('nav-container');
+
+
+    if (!btn || !nav) return;
+
+
+    btn.addEventListener('click', () => {
+      nav.classList.toggle('nav-open');
+    });
+  })();
+</script>
