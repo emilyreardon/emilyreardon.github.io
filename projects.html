@@ -405,59 +405,67 @@
 
 <script>
   /* ── Project data ── */
+  /* Source of truth: Portfolio Site ProjectsCSV in Google Drive.
+     To add/edit projects by hand, see HOW-TO-UPDATE-SITE.md in this repo. */
+
   const projects = [
+
     /* ── PERSONAL ── */
+
     {
-      id: "PER_000",
-      type: "personal",
-      title: "Scituate Harbor Perimeter: Ecoacoustic Study",
-      year: "2026",
-      tools: "iPhone Voice Memos, Audacity, After Effects, sun printing, OpenStreetMap.org",
-      rationale: "This work is made from a heart-shaped harbor in southeastern Massachusetts, viewable from my window. My family has lived by it for generations; my mother's funeral was held at the town marina on its edge, her ashes returned to tide. This work explores relationships between place, people, memory, and belonging. It considers how landscapes hold personal histories, grief, ritual, and everyday life all at once.",
-      description: "A four-minute, one-second, and twenty-two-hundredths-of-a-second ambient audiovisual composition centered on Scituate Harbor, Massachusetts. The runtime corresponds to the date my mother's ashes entered the harbor tide. This shifting audio portrait is a meditation on tidal movement, return, and the overlapping of memory.\n\nField recordings collected in May 2026 along the perimeter of Scituate Harbor. Audio captured on iPhone Voice Memos, composed and mixed in Audacity (free, open-source). Video collected on iPhone. Sun prints made by laying harbor objects — shells, seaweed, sea glass, reeds, small bits of metal — on light-sensitive paper in the sun. Open geographic coastal plot points accessed via OpenStreetMap.org. Work compiled in After Effects.\n\nAerial imagery via marinas.com and Pinterest; creators unknown.",
-      role: "Entire project.",
-      videoPaths: ["images/personal/Emily Reardon_Scituate Harbor Ecoacoustic Study.mp4"],
-      imagePaths: null,
-      gifPaths: null
+      id:          "PER_000",
+      type:        "personal",
+      title:       "Scituate Harbor Perimeter: Ecoacoustic Study",
+      year:        "2026",
+      tools:       "iPhone Voice Memo & Camera, Audacity, sun printing, OpenStreetMap.org, After Effects",
+      rationale:   "This ecoacoustic piece is made from a heart-shaped harbor in southeastern Massachusetts, viewable from my window. My family has lived by it for generations; my mom's memorial was held at the town marina on its edge, her ashes returned to tide. This work explores relationships between place, people, memory, and belonging. It considers how landscapes hold personal histories, grief, ritual, and everyday life all at once.",
+      description: "A four-minute, one-second, and twenty-two-hundredths-of-a-second ambient audiovisual composition centered on Scituate Harbor, Massachusetts. The runtime corresponds to the date my mom's ashes entered the harbor tide. This shifting audio portrait is a meditation on tidal movement, return, and the overlapping of memory.",
+      role:        "Entire project.",
+      videoPaths:  ["images/personal/Emily Reardon_Scituate Harbor Ecoacoustic Study.mp4"],
+      imagePaths:  null,
+      gifPaths:    null
     },
+
     {
-      id: "PER_001",
-      type: "personal",
-      title: "Ethical AI: Intimacy as Infrastructure",
-      year: "2025",
-      tools: "Custom AI, Projection, Mobile, AutoLume, TouchDesigner, OSC",
-      rationale: "The work treats lovingly-given sentimental expression and emotion as well as embodiment and presence as computational inputs. Human traces are compressed and recombined into emergent relations, proposing machine learning at the scale of encounter rather than extraction. The project contributes to growing movements for public-interest and non-extractive AI by modeling intimacy, reciprocity, and care as infrastructure.",
-      description: "A compact AI was trained on a collection of roughly 500 deeply personal bestowed (rather than extracted) items using AutoLume. Its responses are projected through a three-foot crystal-and-metal mobile, creating a shifting, luminous experience. Viewers interact with the piece through facial expressions and full-body movements via OSC, which influence the AI's behavior in real time. The interactions are orchestrated in TouchDesigner and communicated through a Local Area Network, making the experience fully offline and self-contained.",
-      role: "Entire project.",
-      imagePaths: [
-        "images/personal/EmilyReardon_AIAsIntimacy",
-        "images/personal/EmilyReardon_AIAsIntimacyProcess"
-      ],
-      gifPaths: null
+      id:          "PER_001",
+      type:        "personal",
+      title:       "Ethical AI: Intimacy as Infrastructure",
+      year:        "2025",
+      tools:       "Custom built Small Language Model AI via AutoLume, hand-made crystal & metal mobile, TouchDesigner, OSC, projection",
+      rationale:   "This work treats lovingly-given sentimental expression, emotion, embodiment, and presence as alternative computational inputs — exploring new forms of machine learning and issues of mass extraction. Human traces are carefully collected and recombined into emergent relations. The project contributes to growing movements for public-interest and non-extractive AI by modeling intimacy, reciprocity, and care as infrastructure.",
+      description: "A compact AI was trained on a collection of roughly 500 deeply personal items bestowed (rather than extracted) using AutoLume. Its responses are projected through a three-foot crystal-and-metal mobile, serving as a real-world metaphor for how machine learning develops via corpus, training, and predictive, prismatic, shifting recombination. Viewers interact with the piece through facial expressions and full-body movements via OSC, which influence the AI's behavior in real time. The interactions are orchestrated in TouchDesigner and communicated through a Local Area Network, making the experience fully offline and self-contained.",
+      role:        "Entire project.",
+      videoPaths:  null,
+      imagePaths:  ["images/personal/EmilyReardon_AIAsIntimacy", "images/personal/EmilyReardon_AIAsIntimacyProcess"],
+      gifPaths:    null
     },
+
     {
-      id: "PER_002",
-      type: "personal",
-      title: "Projection Mapping Experiments",
-      year: "2026",
-      tools: "MadMapper",
-      rationale: "This experimental series is a first foray into projection mapping. Both my art and design practices marry digital and analog, and controlling light, while removing screen hardware felt liberating. I'm eager to make more formal work using this medium.",
-      description: "I participated in a two day intensive workshop using MadMapper, producing three experiments:\n\n1) Geometric mapping built onto black-and-white schematic.\n\n2) Collaborative mapping integrated into whiteboard sketches.\n\n3) An immersive homage to any artist. For this I created Wavelengths, For Chris Wood (https://www.chriswoodlight.art). It's a prism sculpture with projection-mapped light that orders the accidental and invites reflection on the experience of seeing. While I learned heaps, all work is unfinished and the photos aren't ideal. For Wavelengths I'm particularly interested in playing with materials to better reflect the colors of Wood's light sculptures, and to add ambient interactivity via TouchDesigner and OSC.",
-      role: "",
-      imagePaths: ["images/personal/EmilyReardon_ProjectionMapping"],
-      gifPaths: null
+      id:          "PER_002",
+      type:        "personal",
+      title:       "Projection Mapping Experiments",
+      year:        "2026",
+      tools:       "MadMapper",
+      rationale:   "This experimental series is a first foray into projection mapping. Both my art and design practices marry digital and analog, and controlling light while removing screen hardware felt liberating. I'm eager to make more formal work using this medium.",
+      description: "I participated in a two day intensive workshop using MadMapper, producing three experiments: 1) Geometric mapping built onto black-and-white schematic, 2) Collaborative mapping integrated into whiteboard sketches, 3) An immersive homage to any artist. For this I created Wavelengths, For Chris Wood (https://www.chriswoodlight.art). It's a prism sculpture with projection-mapped light that orders the accidental and invites reflection on the experience of seeing.\n\nAll work is unfinished and the photos aren't ideal. For Wavelengths I'm particularly interested in playing with materials to better reflect the colors of Wood's light sculptures, and to explore ambient interactivity via TouchDesigner and OSC.",
+      role:        "Entire project.",
+      videoPaths:  null,
+      imagePaths:  ["images/personal/EmilyReardon_ProjectionMapping"],
+      gifPaths:    null
     },
+
     {
-      id: "PER_003",
-      type: "personal",
-      title: "Latent Curricula Computational Tiny Prints",
-      year: "2026",
-      tools: "In-progress. Found and shared 'love curriculum' experiments in Cavalry / Typeflow / Typeface Animator.",
-      rationale: "If the universe is the syllabus, how do we study love as liberation? Drawn from songs, texts, streets, and dialogue, these curricular fragments bend at the edge of legibility.\n\nPrintmaking has long fueled social action. When small-scale and personal tiny prints mix with technology, what new scales of reach, participation, and impact become possible?",
-      description: "Over a few days I noted encounters that might serve as curricula for radical love, the idea that love (beyond romantic or familial love) is important in places where it historically been sidelined or avoided, such as in classrooms, workplaces, politics, and beyond. The snippets I collected -- lyrics to Prince's I Would Die For You, a photo of a stickie note posted in the Union Square subway after Trump's first presidential election, an excerpt from an overheard conversation, an excerpt from an interview with Ian McKellen, a quote from Dr. Cornel West -- are reimagined as digital tiny prints: little messages and protests to share.",
-      role: "Entire project.",
-      imagePaths: null,
-      gifPaths: [
+      id:          "PER_003",
+      type:        "personal",
+      title:       "Latent Curricula Computational Tiny Prints",
+      year:        "2026",
+      tools:       "In-progress. Found and shared 'love curriculum' experiments in Cavalry / Typeflow / Typeface Animator.",
+      rationale:   "If the universe is the syllabus, how do we study love as liberation? Drawn from encounters with songs, texts, streets, and dialogue, these curricular fragments bend at the edge of legibility. What is learning, and how does it interact with art? Printmaking has long fueled social action; when small-scale and personal tiny prints mix with technology, what new scales of reach, participation, and impact become possible?",
+      description: "Over a few days I noted encounters that might serve as curricula for radical love, the idea that love (beyond romantic or familial love) is important in places where it has historically been sidelined or avoided, such as in classrooms, workplaces, politics, and beyond. The snippets I collected — lyrics to Prince's I Would Die For You, a photo of a stickie note posted in the Union Square subway after Trump's first presidential election, an excerpt from an overheard conversation, an excerpt from an interview with Ian McKellen, a quote from Dr. Cornel West — are reimagined as digital tiny prints: little messages and protests to share.",
+      role:        "Entire project.",
+      videoPaths:  null,
+      imagePaths:  null,
+      gifPaths:    [
         "images/personal/EmilyReardon_Latent Curricula1_pangsofcloseness.gif",
         "images/personal/EmilyReardon_Latent Curricula2_recoveryismorethan.gif",
         "images/personal/EmilyReardon_Latent Curricula3_ImnotahumanIamdove.gif",
@@ -468,42 +476,49 @@
         "images/personal/EmilyReardon_Latent Curricula8_midddlefthestory.gif"
       ]
     },
+
     /* ── PROFESSIONAL ── */
+
     {
-      id: "PRO_001",
-      type: "professional",
-      title: "Grover's Block Party",
-      year: "2013",
-      tools: "Analog-Digital Hybrid, Traditional Playthings, Augmented Reality",
-      rationale: "Young children's deep, imaginative play with traditional toys—like blocks—builds critical skills, but screens often pull them away. How might we harness kids' attraction to technology to restore the rich benefits of deep play, make foundational literacy more engaging, and shift tech's role from directing play to following the child's lead—deepening engagement and fostering learning?",
-      description: "Kids play with letter blocks on a playdate with Grover & 26 Letter Muppets. Grover & letter Muppets react to child-led play -- noticing, commenting, questioning, singing, serving up letter videos, & more, to scaffold experimentation & deepen learning.\n\nComputer vision 'watches'. Dynamic 'mood' tagging automatically animates Grover. Augmented reality enables Grover & letter Muppets to scaffold player. Adaptive personalized patterns & scaffolds drawn from learning science grow with kids play.\n\nFormative research included iterative in-house play sessions to define a taxonomy of play patterns (pictured here). Summative research included providing families with these sets as well as non-AR off the shelf block sets, pre/post focus groups, Dscout video recordings matched to behavioral data coded together.",
-      role: "Responsible for: Entire project, including concepting, pitching, system design, technology innovation lead, with minimal art direction.",
-      imagePaths: ["images/professional/EmilyReardon_GroversBlockParty"],
-      gifPaths: null
-    },
-    {
-      id: "PRO_002",
-      type: "professional",
-      title: "Sesame Street Family Play",
-      year: "2013",
-      tools: "iPhone & Android phone App for caretakers of young kids.",
-      rationale: "How might we leverage parents' everyday phone use to promote off-screen family connection and address the persistent challenges of daily caregiving—such as tooth-brushing, waiting in line, or bedtime—when emotional intensity is common? In what ways might play function as an intervention to help parents reduce reliance on screens while strengthening their capacity for self-regulation and responsive caregiving?",
+      id:          "PRO_002",
+      type:        "professional",
+      title:       "Sesame Street Family Play",
+      year:        "2013",
+      tools:       "iPhone & Android App for Caretakers of Young Kids",
+      rationale:   "How might we leverage parents' everyday phone use to promote off-screen family connection and address the persistent challenges of daily caregiving—such as tooth-brushing, waiting in line, or bedtime—when emotional intensity is common? In what ways might play function as an intervention to help parents reduce reliance on screens while strengthening their capacity for self-regulation and responsive caregiving?",
       description: "Kids and grown ups play off-screen games together. Game ideas and rules are generated by the grown up on their phone, based on current setting (from in the tubby, to at the dentist, to at a restaurant, to waiting at a bus stop), number of players, and available props. Grown ups deliver the game in real time—through voice, props, and imagination—not devices. Games transform \"have to\" moments into shared joy, strengthening bonds. As grown-ups gain confidence in creating play, they rely less on the app and more on their own spontaneity.",
-      role: "Responsible for: Concepting, pitching, play experience & system design, play research. Phone app built on 3rd party game engine.",
-      imagePaths: ["images/professional/EmilyReardon_SesameStreetFamilyPlay"],
-      gifPaths: null
+      role:        "Concepting, pitching, play experience & system design, play research. Phone app built on 3rd party game engine.",
+      videoPaths:  null,
+      imagePaths:  ["images/professional/EmilyReardon_SesameStreetFamilyPlay"],
+      gifPaths:    null
     },
+
     {
-      id: "PRO_003",
-      type: "professional",
-      title: "Sesame Street Playset",
-      year: "2012",
-      tools: "Analog-Digital Hybrid, Traditional Playthings, Augmented Reality",
-      rationale: "How might we harness kids' attraction to screens to restore—not erode—the rich, research-backed benefits of deep play with traditional playthings? How might we nurture imaginative play, perspective-taking, and empathy by offering scaffolded, safe spaces to practice these skills? How might we reframe technology's role in young children's play—from directing it to following the child's lead, deepening engagement, and fostering learning?",
+      id:          "PRO_001",
+      type:        "professional",
+      title:       "Grover's Block Party",
+      year:        "2013",
+      tools:       "Analog-Digital Hybrid, Traditional Playthings, Augmented Reality",
+      rationale:   "Young children's deep, imaginative play with traditional toys—like blocks—builds critical skills, but screens often pull them away. How might we harness kids' attraction to technology to restore the rich benefits of deep play, make foundational literacy more engaging, and shift tech's role from directing play to following the child's lead—deepening engagement and fostering learning?",
+      description: "Kids play with letter blocks on a playdate with Grover & 26 Letter Muppets. Grover & letter Muppets react to child-led play -- noticing, commenting, questioning, singing, serving up letter videos, & more, to scaffold experimentation & deepen learning.\n\nComputer vision 'watches'. Dynamic 'mood' tagging automatically animates Grover. Augmented reality enables Grover & letter Muppets to scaffold player. Adaptive personalized patterns & scaffolds drawn from learning science grow with kids play.\n\nFormative research included iterative in-house play sessions to define a taxonomy of play patterns (pictured here). Summative research included providing families with these sets as well as non-AR off the shelf block sets, pre/post focus groups, Dscout video recordings matched to behavioral data coded together.",
+      role:        "Entire project, including concepting, pitching, system design, technology innovation lead, excluding 3rd party vendor and minimal art direction.",
+      videoPaths:  null,
+      imagePaths:  ["images/professional/EmilyReardon_GroversBlockParty"],
+      gifPaths:    null
+    },
+
+    {
+      id:          "PRO_003",
+      type:        "professional",
+      title:       "Sesame Street Playset",
+      year:        "2012",
+      tools:       "Analog-Digital Hybrid, Traditional Playthings, Augmented Reality",
+      rationale:   "How might we harness kids' attraction to screens to restore—not erode—the rich, research-backed benefits of deep play with traditional playthings? How might we nurture imaginative play, perspective-taking, and empathy by offering scaffolded, safe spaces to practice these skills? How might we reframe technology's role in young children's play—from directing it to following the child's lead, deepening engagement, and fostering learning?",
       description: "Kids play with a physical Sesame Street playset. If viewed through an iPad, the arrangement of Muppets, objects, settings spark open-ended and goal directed imaginative play scaffolds to help build creativity, practice social and emotional skills, & deepen empathy.\n\nComputer vision 'watches'. Augmented reality enables Muppets to animate and talk to scaffold player's imaginative play. Adaptive personalized patterns & scaffolds drawn from learning science grow with kids play.",
-      role: "Responsible for: Entire project, including concepting, pitching, system design, technology innovation lead.",
-      imagePaths: ["images/professional/EmilyReardon_SesameStreetPlayset"],
-      gifPaths: null
+      role:        "Entire project, including concepting, pitching, system design, technology innovation lead, excluding 3rd party vendor and minimal art direction.",
+      videoPaths:  null,
+      imagePaths:  ["images/professional/EmilyReardon_SesameStreetPlayset"],
+      gifPaths:    null
     },
     {
       id: "PRO_004",
